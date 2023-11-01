@@ -29,4 +29,8 @@ class Card(val cardType: CardType,
             return cardList
         }
     }
+
+    override fun toString(): String{
+        return "Card(cardType=$cardType, cardValue=$cardValue)"
+    }
 }
