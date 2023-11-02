@@ -1,9 +1,9 @@
 class Card(val cardType: CardType,
            var cardValue: CardValue
-) {
+) : MutableList<Card> {
     companion object{
         fun generateCards(deckAmount: Int): MutableList<Card> {
-            val cardList:MutableList<Card> = mutableListOf()
+            val cardList: MutableList<Card> = mutableListOf()
             val cardValueList:List<CardValue> = listOf(
                 CardValue.Ace,
                 CardValue.Two,

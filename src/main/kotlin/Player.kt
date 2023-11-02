@@ -1,7 +1,8 @@
 class Player {
-    fun getHand(){
-        val playingDeck: MutableList<Card>
-        var deckCount: Int = 1
-        playingDeck = Card.generateCards(1)
+    val cardList: MutableList<Card> = mutableListOf()
+
+    fun takeCard(generatedCardList: List<Card>){
+        cardList.add(generatedCardList.last())
     }
+
 }
