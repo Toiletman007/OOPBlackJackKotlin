@@ -2,7 +2,7 @@ class Card(val cardType: CardType,
            var cardValue: CardValue
 ) {
     companion object{
-        fun generateCards(): MutableList<Card> {
+        fun generateCards(deckAmount: Int): MutableList<Card> {
             val cardList:MutableList<Card> = mutableListOf()
             val cardValueList:List<CardValue> = listOf(
                 CardValue.Ace,
@@ -19,6 +19,7 @@ class Card(val cardType: CardType,
                 CardValue.Queen,
                 CardValue.King
             )
+            for (i in 1..deckAmount)
             cardValueList.forEach{
                 cardList.add(Card(CardType.Spades, it))
                 cardList.add(Card(CardType.Hearts, it))
