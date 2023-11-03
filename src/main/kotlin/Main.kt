@@ -6,4 +6,7 @@ fun main() {
     val player1 = Player()
     player1.takeCard(generatedCardList)
     println(player1.cardList)
+    player1.takeCard(generatedCardList)
+    println(player1.cardList)
+
 }
