@@ -7,6 +7,7 @@ fun main() {
     player1.takeCard(generatedCardList, 2)
     println("Your cards are: ${player1.cardList}")
     println(player1.cardList)
+    println()
 
 
 }

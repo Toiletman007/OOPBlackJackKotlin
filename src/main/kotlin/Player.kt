@@ -6,6 +6,12 @@ class Player {
         var card = generatedCardList[i]
         cardList.add(card)
         generatedCardList[i]
-        i+=1}
+        i+=1
+        }
     }
+
+
+
+
+
 }
