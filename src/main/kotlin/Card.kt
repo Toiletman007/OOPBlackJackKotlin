@@ -33,6 +33,6 @@ class Card(
     }
 
     override fun toString(): String{
-        return "Card(cardType=$cardType, cardValue=$cardValue)"
+        return "   $cardValue of $cardType   "
     }
 }

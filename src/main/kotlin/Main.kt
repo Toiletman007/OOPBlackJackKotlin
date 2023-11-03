@@ -4,9 +4,9 @@ fun main() {
     val generatedCardList: MutableList<Card> = Card.generateCards(amountOfPlayingDecks)
     println("Amount of decks in use: $amountOfPlayingDecks")
     val player1 = Player()
-    player1.takeCard(generatedCardList)
+    player1.takeCard(generatedCardList, 2)
+    println("Your cards are: ${player1.cardList}")
     println(player1.cardList)
-    player1.takeCard(generatedCardList)
-    println(player1.cardList)
+
 
 }
