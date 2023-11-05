@@ -3,8 +3,8 @@ fun main() {
 }
 
 fun singlePlayer(){
+    var B: Int = 0
     var gameEnded: Boolean = false
-    var containsAce:Boolean = false
     println("How many decks do you want to play with?")
     val amountOfPlayingDecks = readln().toInt()
     val generatedCardList: MutableList<Card> = Card.generateCards(amountOfPlayingDecks)
@@ -18,6 +18,23 @@ fun singlePlayer(){
     while (gameEnded == false){
         println("Your cards are: ${player1.cardList} and the total is: ${player1.points}")
         println("Do you wanna hit[H], stand[S], Leave[X]")
+
+        if (player1.points > 21 && player1.cardList.any { it.cardValue == CardValue.Ace }){
+            println("ACE DETECTED!!!")
+            for (i in 0..player1.cardList.size-1){
+                if(player1.cardList[i].cardValue.value == 11){
+                    player1.cardList[i].cardValue.value = 1
+                    player1.points = player1.points - 10
+                    B = player1.cardList[i].cardValue.value
+                    println("value changed to 1 and now is ${player1.cardList[i].cardValue.value}")
+                }
+            }
+        }else if (player1.points > 21){
+            println("You went over 21 with ${player1.points} and ${player1.cardList} and ${B}")
+            gameEnded = true
+            println("Elif")
+            break
+        }
         when (readln()){
             "H" -> {
                 println("You chose Hit!")
@@ -34,21 +51,26 @@ fun singlePlayer(){
             }
         }
 
-        if (player1.points > 21 && player1.cardList.contains(Card(CardType.Clubs, CardValue.Ace)) ||
-                                    player1.cardList.contains(Card(CardType.Diamonds, CardValue.Ace))||
-                                    player1.cardList.contains(Card(CardType.Hearts, CardValue.Ace)) ||
-                                    player1.cardList.contains(Card(CardType.Spades, CardValue.Ace))){
-            containsAce = true
+        if (player1.points > 21 && player1.cardList.any { it.cardValue == CardValue.Ace }){
             println("ACE DETECTED!!!")
-
+            for (i in 0..player1.cardList.size-1){
+                if(player1.cardList[i].cardValue.value == 11){
+                    player1.cardList[i].cardValue.value = 1
+                    player1.points = player1.points - 10
+                    B = player1.cardList[i].cardValue.value
+                    println("value changed to 1 and now is ${player1.cardList[i].cardValue.value}")
+                }
+            }
         }else if (player1.points > 21){
-            println("You went over 21 with ${player1.points} and ${player1.cardList}")
+            println("You went over 21 with ${player1.points} and ${player1.cardList} and ${B}")
             gameEnded = true
+            println("Elif")
             break
         }
         if (player1.points >21){
-            println("You went over 21 with ${player1.points} and ${player1.cardList}")
+            println("You went over 21 with ${player1.points} and ${player1.cardList} and ${B}")
             gameEnded = true
+            println("non elif")
             break
         }
 
