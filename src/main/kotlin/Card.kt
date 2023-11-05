@@ -2,6 +2,7 @@ class Card(
     val cardType: CardType,
     var cardValue: CardValue
 ){
+
     companion object{
         fun generateCards(deckAmount: Int): MutableList<Card> {
             val cardList: MutableList<Card> = mutableListOf()

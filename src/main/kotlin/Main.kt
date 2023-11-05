@@ -3,6 +3,8 @@ fun main() {
 }
 
 fun singlePlayer(){
+    var gameEnded: Boolean = false
+    var containsAce:Boolean = false
     println("How many decks do you want to play with?")
     val amountOfPlayingDecks = readln().toInt()
     val generatedCardList: MutableList<Card> = Card.generateCards(amountOfPlayingDecks)
@@ -13,7 +15,7 @@ fun singlePlayer(){
     player1.takeCard(generatedCardList, 2)
     dealer.takeCard(generatedCardList, 2)
     println("Dealers cards are: ${dealer.cardList} and the total is: ${dealer.points}")
-    while (true){
+    while (gameEnded == false){
         println("Your cards are: ${player1.cardList} and the total is: ${player1.points}")
         println("Do you wanna hit[H], stand[S], Leave[X]")
         when (readln()){
@@ -27,29 +29,46 @@ fun singlePlayer(){
             }
             "X" -> {
                 println("You chose to leave!")
+                gameEnded = true
                 break
             }
         }
 
+        if (player1.points > 21 && player1.cardList.contains(Card(CardType.Clubs, CardValue.Ace)) ||
+                                    player1.cardList.contains(Card(CardType.Diamonds, CardValue.Ace))||
+                                    player1.cardList.contains(Card(CardType.Hearts, CardValue.Ace)) ||
+                                    player1.cardList.contains(Card(CardType.Spades, CardValue.Ace))){
+            containsAce = true
+            println("ACE DETECTED!!!")
 
-        if (player1.points > 21) {
-            println("You went over 21, with: ${player1.points}")
+        }else if (player1.points > 21){
+            println("You went over 21 with ${player1.points} and ${player1.cardList}")
+            gameEnded = true
+            break
+        }
+        if (player1.points >21){
+            println("You went over 21 with ${player1.points} and ${player1.cardList}")
+            gameEnded = true
             break
         }
 
+
+
         if (player1.points == 21 && dealer.points != 21){
-            println("You got 21 WINNER!!!")
+            println("You got 21, WINNER!!!")
+            gameEnded = true
             break
         }
 
         if (player1.points == 21 && dealer.points == 21){
             println("Tie, bets returned...")
+            gameEnded = true
             break
         }
 
 
     }
-    while (player1.points < 21){
+    while (player1.points <= 21 && gameEnded == false){
         if (dealer.points < 17){
             println("Dealers cards are below 17, [${dealer.points}] so he has to take")
             dealer.takeCard(generatedCardList, 1)
@@ -57,6 +76,8 @@ fun singlePlayer(){
         }
         if (dealer.points > 21){
             println("Dealer went over 21 with [${dealer.points}]")
+            println("You win!!! with ${player1.points}")
+            gameEnded = true
             break
         }
     }
