@@ -20,7 +20,7 @@ fun singlePlayer(){
         dealer.checkAce21(dealer.cardList)
         println("Your cards are: ${player1.cardList} and the total is: ${player1.points}")
         println("Do you wanna hit[H], stand[S], Leave[X]")
-        when (readln()){
+        when (readln().toUpperCase()){
             "H" -> {
                 println("You chose Hit!")
                 player1.takeCard(generatedCardList, 1)
