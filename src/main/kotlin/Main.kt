@@ -1,8 +1,8 @@
 fun main() {
-    SinglePlayer()
+    singlePlayer()
 }
 
-fun SinglePlayer(){
+fun singlePlayer(){
     var secondWhile: Boolean = true
     var firstWhile: Boolean = true
     println("How many decks do you want to play with?")
@@ -16,8 +16,8 @@ fun SinglePlayer(){
     dealer.takeCard(generatedCardList, 2)
     println("Dealers first card is [ ${dealer.cardList[0]} ] and it's value is: ${dealer.cardList[0].cardValue.value}")
     while (true){
-        player1.CheckAce21(player1.cardList)
-        dealer.CheckAce21(dealer.cardList)
+        player1.checkAce21(player1.cardList)
+        dealer.checkAce21(dealer.cardList)
         println("Your cards are: ${player1.cardList} and the total is: ${player1.points}")
         println("Do you wanna hit[H], stand[S], Leave[X]")
         when (readln()){
@@ -35,7 +35,7 @@ fun SinglePlayer(){
                 break
             }
         }
-        player1.CheckAce21(player1.cardList)
+        player1.checkAce21(player1.cardList)
         if (player1.points > 21){
             println("You went over 21 with ${player1.points} and ${player1.cardList}")
             secondWhile = false

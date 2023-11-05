@@ -10,7 +10,7 @@ class Player {
         }
     }
 
-    fun CheckAce21(playerCardList: MutableList<Card>) {
+    fun checkAce21(playerCardList: MutableList<Card>) {
         for (i in 0..playerCardList.size - 1) {
             if (points > 21 && playerCardList.any { it.cardValue.value == CardValue.Ace.value }) {
                 for (i in 0..playerCardList.size - 1) {
