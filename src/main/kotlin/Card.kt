@@ -7,7 +7,19 @@ class Card(
         fun generateCards(deckAmount: Int): MutableList<Card> {
             val cardList: MutableList<Card> = mutableListOf()
             val cardValueList:List<CardValue> = listOf(
-                CardValue.Ace
+                CardValue.Ace,
+                CardValue.Two,
+                CardValue.Three,
+                CardValue.Four,
+                CardValue.Five,
+                CardValue.Six,
+                CardValue.Seven,
+                CardValue.Eight,
+                CardValue.Nine,
+                CardValue.Ten,
+                CardValue.Jack,
+                CardValue.Queen,
+                CardValue.King
             )
             for (i in 1..deckAmount)
             cardValueList.forEach{
